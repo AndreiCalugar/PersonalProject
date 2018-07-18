@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IntersectionDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Laps">
+    <Key>
+      <PropertyRef Name="id_lap" />
+    </Key>
+    <Property Name="id_lap" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_start" Type="datetime" />
+    <Property Name="date_end" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Statistics">
+    <Key>
+      <PropertyRef Name="id_stat" />
+    </Key>
+    <Property Name="id_stat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_lap" Type="int" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="decibels" Type="float" />
+    <Property Name="gas" Type="float" />
+    <Property Name="counter" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Statistics_Laps">
+    <End Role="Laps" Type="Self.Laps" Multiplicity="0..1" />
+    <End Role="Statistics" Type="Self.Statistics" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Laps">
+        <PropertyRef Name="id_lap" />
+      </Principal>
+      <Dependent Role="Statistics">
+        <PropertyRef Name="id_lap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="IntersectionDataModelStoreContainer">
+    <EntitySet Name="Laps" EntityType="Self.Laps" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Statistics" EntityType="Self.Statistics" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Statistics_Laps" Association="Self.FK_Statistics_Laps">
+      <End Role="Laps" EntitySet="Laps" />
+      <End Role="Statistics" EntitySet="Statistics" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

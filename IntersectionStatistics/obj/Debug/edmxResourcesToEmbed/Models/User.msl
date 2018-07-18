@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IntersectionDataModelStoreContainer" CdmEntityContainer="IntersectionDataEntities">
+    <EntitySetMapping Name="Laps">
+      <EntityTypeMapping TypeName="IntersectionDataModel.Lap">
+        <MappingFragment StoreEntitySet="Laps">
+          <ScalarProperty Name="date_end" ColumnName="date_end" />
+          <ScalarProperty Name="date_start" ColumnName="date_start" />
+          <ScalarProperty Name="id_lap" ColumnName="id_lap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Statistics">
+      <EntityTypeMapping TypeName="IntersectionDataModel.Statistic">
+        <MappingFragment StoreEntitySet="Statistics">
+          <ScalarProperty Name="counter" ColumnName="counter" />
+          <ScalarProperty Name="gas" ColumnName="gas" />
+          <ScalarProperty Name="decibels" ColumnName="decibels" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="id_lap" ColumnName="id_lap" />
+          <ScalarProperty Name="id_stat" ColumnName="id_stat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IntersectionDataModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

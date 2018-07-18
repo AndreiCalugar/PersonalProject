@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IntersectionStatisticsModelStoreContainer" CdmEntityContainer="IntersectionStatisticsEntities">
+    <EntitySetMapping Name="Laps">
+      <EntityTypeMapping TypeName="IntersectionStatisticsModel.Lap">
+        <MappingFragment StoreEntitySet="Laps">
+          <ScalarProperty Name="id_lap" ColumnName="id_lap" />
+          <ScalarProperty Name="date_start" ColumnName="date_start" />
+          <ScalarProperty Name="date_end" ColumnName="date_end" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Statistics">
+      <EntityTypeMapping TypeName="IntersectionStatisticsModel.Statistic">
+        <MappingFragment StoreEntitySet="Statistics">
+          <ScalarProperty Name="id_stat" ColumnName="id_stat" />
+          <ScalarProperty Name="id_lap" ColumnName="id_lap" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="decibels" ColumnName="decibels" />
+          <ScalarProperty Name="gas" ColumnName="gas" />
+          <ScalarProperty Name="counter" ColumnName="counter" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IntersectionStatisticsModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getUsernameAndPasswordProcedure" FunctionName="IntersectionStatisticsModel.Store.getUsernameAndPasswordProcedure">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IntersectionStatisticsModel.getUsernameAndPasswordProcedure_Result">
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="first_name" ColumnName="first_name" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

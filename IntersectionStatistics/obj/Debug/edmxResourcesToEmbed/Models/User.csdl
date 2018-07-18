@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IntersectionDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="IntersectionDataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Laps" EntityType="IntersectionDataModel.Lap" />
+    <EntitySet Name="Statistics" EntityType="IntersectionDataModel.Statistic" />
+    <EntitySet Name="Users" EntityType="IntersectionDataModel.User" />
+    <AssociationSet Name="FK_Statistics_Laps" Association="IntersectionDataModel.FK_Statistics_Laps">
+      <End Role="Lap" EntitySet="Laps" />
+      <End Role="Statistic" EntitySet="Statistics" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Lap">
+    <Key>
+      <PropertyRef Name="id_lap" />
+    </Key>
+    <Property Name="id_lap" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_start" Type="DateTime" Precision="3" />
+    <Property Name="date_end" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Statistics" Relationship="IntersectionDataModel.FK_Statistics_Laps" FromRole="Lap" ToRole="Statistic" />
+  </EntityType>
+  <EntityType Name="Statistic">
+    <Key>
+      <PropertyRef Name="id_stat" />
+    </Key>
+    <Property Name="id_stat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_lap" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <Property Name="decibels" Type="Double" />
+    <Property Name="gas" Type="Double" />
+    <Property Name="counter" Type="Int32" />
+    <NavigationProperty Name="Lap" Relationship="IntersectionDataModel.FK_Statistics_Laps" FromRole="Statistic" ToRole="Lap" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id_user" />
+    </Key>
+    <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="first_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Statistics_Laps">
+    <End Type="IntersectionDataModel.Lap" Role="Lap" Multiplicity="0..1" />
+    <End Type="IntersectionDataModel.Statistic" Role="Statistic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lap">
+        <PropertyRef Name="id_lap" />
+      </Principal>
+      <Dependent Role="Statistic">
+        <PropertyRef Name="id_lap" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

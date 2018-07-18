@@ -1,0 +1,275 @@
+﻿ <!-- Page Content -->
+<div class="container">
+
+    <!-- Page Header -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                View decibels statistics !
+              <!--<small>Secondary Text</small> --> 
+            </h1>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- Projects Row -->
+    <div class="row">
+        <div class="col-md-6 portfolio-item">
+            <table class="table">
+                <thead>
+                    <tr>
+                        
+                        <th>Date</th>
+                        <th>Decibels</th>
+                        <th>Gas</th>
+                        <th>Counter</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="statistics in allStatistics">
+                       
+                        <td>{{statistics.date}}</td>
+                        <td>{{statistics.decibels}}</td>
+                        <td>{{statistics.gas}}</td>
+                        <td>{{statistics.counter}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6 portfolio-item">
+            <canvas id="line"
+                    height="350"
+                    width="550"
+                    class="chart chart-line"
+                    chart-data="data"
+                    chart-labels="labels"
+                    chart-series="series"
+                    chart-options="options"
+                    chart-dataset-override="datasetOverride"
+                    chart-click="onClick"
+                    chart-type="line"></canvas>
+        
+          
+            </div>
+    </div>
+    <!-- /.row -->
+    <!-- Projects Row -->
+    <div class="row">
+        <div class="col-md-6 portfolio-item">
+
+           
+                <div class="btn-group">
+                    <button class="btn">Select location</button>
+                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                        <li><a tabindex="-1" href="!/decibels">Zorilor</a></li>
+                        <li><a tabindex="-1" href="#">Marasti</a></li>
+                        <li><a tabindex="-1" href="#">Memorandumului</a></li>
+                        <li><a tabindex="-1" href="#">Manastur</a></li>
+                        <li><a tabindex="-1" href="#">Piata Avram Iancu</a></li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="#">Other</a></li>
+                    </ul>
+               
+
+
+              <br>  <button type="submit" ng-click="getStatistics()" class="btn btn-primary"  style="padding-right:45px">Get Statistics&nbsp;&nbsp;  </button><br>
+               <br> <button type="submit" ng-click="returnStatistics()" class="btn btn-success">Start collecting data </button><br>
+               <br> <button type="submit" class="btn btn-danger">Stop collecting data</button>
+            </div>
+        </div>
+        <div class="col-md-6 portfolio-item">
+
+
+            <div class="col-lg-10">
+                From:
+                <input ng-model="date3" datetime-picker date-format="yyyy-MM-dd HH:mm:ss" />
+                To:
+                <input ng-model="date4" datetime-picker date-format="yyyy-MM-dd HH:mm:ss" />
+            </div>
+    </div>
+    
+
+    <hr>
+
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="col-lg-12">
+                <p>Copyright &copy; Made by Calugar Andrei</p>
+            </div>
+        </div>
+        <!-- /.row -->
+    </footer>
+
+</div>
+    <!-- /.container --><!-- /.container -->
+    <!--
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-sm-4"></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Lap_id</th>
+                        <th>Date</th>
+                        <th>Decibels</th>
+                        <th>Gas</th>
+                        <th>Counter</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="statistics in allStatistics">
+                        <th scope="row">{{statistics.id_stat}}</th>
+                        <td>{{statistics.id_lap}} </td>
+                        <td>{{statistics.date}}</td>
+                        <td>{{statistics.decibels}}</td>
+                        <td>{{statistics.gas}}</td>
+                        <td>{{statistics.counter}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="row">
+
+
+
+
+            <div class="col-sm-4">
+                <div class="col-lg-3">
+                    From:
+                    <input ng-model="date3" datetime-picker date-format="yyyy-MM-dd HH:mm:ss" />
+                    To:
+                    <input ng-model="date4" datetime-picker date-format="yyyy-MM-dd HH:mm:ss" />
+                </div>
+
+            </div>
+
+
+            <div class="col-sm-4" style="background-color:lavender;">
+                <div class="btn-group">
+                    <button class="btn">Please Select From List</button>
+                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                        <li><a tabindex="-1" href="!/decibels">Zorilor</a></li>
+                        <li><a tabindex="-1" href="#">Marasti</a></li>
+                        <li><a tabindex="-1" href="#">Memorandumului</a></li>
+                        <li><a tabindex="-1" href="#">Manastur</a></li>
+                        <li><a tabindex="-1" href="#">Piata Avram Iancu</a></li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="#">Other</a></li>
+                    </ul>
+                </div>
+
+
+                <button type="submit" ng-click="getStatistics()" class="btn btn-success">Get Statistics</button>
+            </div>
+
+
+
+        </div>
+
+        <div class="row">
+
+
+     <div class="col-sm-4"></div>
+       <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div class="col-lg-3">
+                    <canvas
+                            id="line" class="chart chart-line" chart-data="data"
+                            chart-labels="labels" chart-series="series" chart-options="options"
+                            chart-dataset-override="datasetOverride" chart-click="onClick">
+
+                    </canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        -->

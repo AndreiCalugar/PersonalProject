@@ -1,0 +1,58 @@
+﻿@model IntersectionStatistics.Models.Statistic
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Statistic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.decibels)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.decibels)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.counter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.counter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lap.id_lap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lap.id_lap)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_stat }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

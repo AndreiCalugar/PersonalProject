@@ -1,0 +1,64 @@
+﻿@model IntersectionStatistics.Models.Statistic
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Statistic</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.decibels)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.decibels)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.counter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.counter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lap.id_lap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lap.id_lap)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
